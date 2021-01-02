@@ -588,7 +588,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: colin-idle-flipped
-  m_Speed: 0.39
+  m_Speed: 0.33
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -9005642209075601661}
@@ -876,7 +876,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: colin-idle
-  m_Speed: 0.39
+  m_Speed: 0.33
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -1509178520338277236}

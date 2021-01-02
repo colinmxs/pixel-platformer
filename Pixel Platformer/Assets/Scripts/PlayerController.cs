@@ -14,7 +14,7 @@
         [SerializeField] private LayerMask _whatIsGround;              // A mask determining what is ground to the character
         [SerializeField] private Transform _groundCheck;             // A position marking where to check if the player is grounded.
 
-        const float _groundedRadius = .2f; // Radius of the overlap circle to determine if grounded
+        const float _groundedRadius = .05f; // Radius of the overlap circle to determine if grounded
         private bool _isGrounded;            // Whether or not the player is grounded.
         private Rigidbody2D _rigidBody2d;
         private bool _isFlipped = false;  // For determining which way the player is currently facing.
