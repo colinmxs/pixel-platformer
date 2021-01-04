@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7149700065795983065}
   - component: {fileID: 7149700065795983067}
   - component: {fileID: 7149700065795983068}
+  - component: {fileID: 5293478448699945531}
+  - component: {fileID: 3238216677138629158}
   m_Layer: 0
   m_Name: DeathZone
   m_TagString: Untagged
@@ -71,8 +73,142 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a0e1cdc676b704aa211d6f066a0f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _respawnZombies: 1
+  _respawnHumans: 1
   _respawn: {fileID: 7149700066145968085}
   _blinkSecs: 1
+  OnPlayerTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5293478448699945531}
+        m_MethodName: Scream
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnZombieTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5293478448699945531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7149700065795983064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b60a16a8328764d8a217fc82aebfff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Clips:
+  - {fileID: 8300000, guid: 477f3e8905800d446b91f0cdce5d9f79, type: 3}
+  - {fileID: 8300000, guid: 79acc07192ded4c4db28cd3464761c74, type: 3}
+  - {fileID: 8300000, guid: 398bda5c5d7caf24384be1f2edf94787, type: 3}
+  - {fileID: 8300000, guid: 550812e7335b5d746bedc417321d960e, type: 3}
+  DeathClip: {fileID: 8300000, guid: 03537aaa626778c47a470812adf941f1, type: 3}
+  Source: {fileID: 3238216677138629158}
+--- !u!82 &3238216677138629158
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7149700065795983064}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7149700066145968085
 GameObject:
   m_ObjectHideFlags: 0
