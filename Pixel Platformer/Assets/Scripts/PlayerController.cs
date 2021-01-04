@@ -24,9 +24,10 @@
         private bool _jump = false;
         private bool _sprint = false;
         private float _horizontalMove;
-        
+
         [Header("Events")]
         [Space]
+        public UnityEvent OnJump = new UnityEvent();
 
         public AnimationBoolEvent OnAnimationEvent;
 
@@ -126,9 +127,8 @@
             {
                 // Add a vertical force to the player.
                 _rigidBody2d.AddForce(new Vector2(0f, _jumpForce));
+                OnJump.Invoke();
             }
-
-            //
         }
         
         private void Flip()
