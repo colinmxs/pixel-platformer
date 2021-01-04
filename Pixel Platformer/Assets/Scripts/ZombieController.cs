@@ -12,6 +12,7 @@
         [SerializeField] private float _vision = 5f;
         [SerializeField] private float _runSpeed = 2f;
         private GameObject _spawnPoint;
+        private Screamer _audio;
 
         public Vector3 Spawn
         {
@@ -23,13 +24,14 @@
             _animator = GetComponent<Animator>();
             _rb = GetComponent<Rigidbody2D>();
             Spawn = transform.position;
+            _audio = GetComponent<Screamer>();
         }
         void OnDrawGizmosSelected()
         {
             // Draws a 5 unit long red line in front of the object
             Gizmos.color = Color.red;
             Vector3 direction = transform.TransformDirection(-1, 0, 0) * _vision;
-            Gizmos.DrawRay(transform.position, direction);
+            Gizmos.DrawRay(new Vector3(transform.position.x, transform.position.y + .3f, 0), direction);
         }
 
         private void FixedUpdate()
@@ -40,6 +42,7 @@
             {
                 if (collision.collider != null && collision.collider.TryGetComponent<PlayerController>(out _))
                 {
+                    _audio.PlayZombie();
                     _move = true;
                     _animator.SetBool("IsRunning", true);
                 }
