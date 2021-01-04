@@ -2,28 +2,38 @@
 {
     using System.Collections;
     using UnityEngine;
+    using UnityEngine.Events;
 
     public class DeathZone : MonoBehaviour
     {
+        [SerializeField]
+        private bool _respawnZombies = true;
+        [SerializeField]
+        private bool _respawnHumans = true;
         [SerializeField]
         private GameObject _respawn;
         [SerializeField]
         private float _blinkSecs = 1f;
 
+        public UnityEvent OnPlayerTrigger = new UnityEvent();
+        public UnityEvent OnZombieTrigger = new UnityEvent();
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.TryGetComponent<PlayerController>(out _))
+            if (_respawnHumans && collision.gameObject.TryGetComponent<PlayerController>(out _))
             {
+                OnPlayerTrigger.Invoke();
                 StartCoroutine(Respawn(collision.gameObject));
             }
-            if(collision.gameObject.TryGetComponent<ZombieController>(out var zombie))
+            else if(_respawnZombies && collision.gameObject.TryGetComponent<ZombieController>(out var zombie))
             {
+                OnZombieTrigger.Invoke();
                 StartCoroutine(RespawnZombie(zombie));
             }
         }
 
         private IEnumerator Respawn(GameObject player)
-        {
+        {            
             yield return new WaitForSeconds(.5f);
             var rb = player.GetComponent<Rigidbody2D>();
             rb.velocity = Vector2.zero;
