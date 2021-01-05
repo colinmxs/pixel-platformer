@@ -33,16 +33,18 @@
             Vector3 direction = transform.TransformDirection(-1, 0, 0) * _vision;
             Gizmos.DrawRay(new Vector3(transform.position.x, transform.position.y + .3f, 0), direction);
         }
-
+        
         private void FixedUpdate()
         {
             Vector2 direction = transform.TransformDirection(-1, 0, 0);
-            var collisions = Physics2D.RaycastAll(transform.position, direction, _vision);
-            foreach (var collision in collisions)
+            var runCollisions = Physics2D.RaycastAll(transform.position, direction, _vision);
+            var growlCollisions = Physics2D.RaycastAll(transform.position, direction, 10f);
+            bool move = _move;
+            
+            foreach (var collision in runCollisions)
             {
                 if (collision.collider != null && collision.collider.TryGetComponent<PlayerController>(out _))
                 {
-                    _audio.PlayZombie();
                     _move = true;
                     _animator.SetBool("IsRunning", true);
                 }
@@ -57,7 +59,14 @@
                     Move();
                 }
             }
-            
+            foreach (var collision in growlCollisions)
+            {
+                if (collision.collider != null && collision.collider.TryGetComponent<PlayerController>(out _))
+                {
+                    if (move != _move)
+                        _audio.PlayZombie();
+                }
+            }
         }
 
         public void Move()
