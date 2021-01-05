@@ -54,20 +54,24 @@
         }
         IEnumerator Run()
         {
-            int millis = 0;
-
+            int millis = 60000;
+            int currentTime = 0;
             while (!breaker)
             {
-                millis += 10;
+                millis -= 10;
+                currentTime += 10;
 
                 double totalMilliseconds = millis;
                 var totalSeconds = totalMilliseconds / 1000;
 
-                var minutes = Math.Floor(totalSeconds / 60);
                 var seconds = totalSeconds % 60;
-                CurrentTime = totalMilliseconds;
-                FormattedCurrentTime = $"{minutes}:{seconds.ToString("00.00")}";
-                text.text = FormattedCurrentTime;
+                CurrentTime = currentTime;
+                if(millis > 0)
+                {
+                    FormattedCurrentTime = $"{seconds.ToString("00.00")}";
+                    text.text = FormattedCurrentTime;
+                }
+                
                 yield return new WaitForSeconds(.01f);
             }
         }
