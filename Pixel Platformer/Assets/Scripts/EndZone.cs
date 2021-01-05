@@ -23,7 +23,7 @@
             }
             else
             {
-                _finalMessageText.text = "Try to finish in under a minute for an alternate ending. press 'r' to restart.";
+                _finalMessageText.text = "Try to finish in under a minute. press 'r' to restart.";
             }
             
             GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>().Stop();
